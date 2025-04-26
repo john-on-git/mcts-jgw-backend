@@ -13,10 +13,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@SecondaryTable(name = "task_status", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))
+@SecondaryTable(name="task_status")
 public class Task {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "task_generator")
+    @SequenceGenerator(name="task_generator", sequenceName = "task_id_seq", allocationSize = 1)
+    private Long id;
 
     @Column(nullable=false)
     private String title;
@@ -24,10 +26,11 @@ public class Task {
     @Column(nullable=true)
     private String description;
 
-    @Column(nullable = false, name = "title", table = "task_status")
-    private String statusId;
-
     @Column(nullable=false)
     private LocalDateTime dueAt;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name="status", nullable = false)
+    private TaskStatus status;
 }
 
