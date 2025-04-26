@@ -1,0 +1,43 @@
+# Task Service
+- This document provides details of the functionality of the task service.
+- This service is responsible for all operations on tasks. No other service should operate on tasks.
+
+- ## Create Task.
+  - **Method:** POST
+  - **URI/Path:** ```/task/create```
+  - **Body:**
+    - JSON representing the task to create, with the following properties:
+      - **Title:** string.
+      - **Description (optional):** string.
+      - **Status:** 'TODO' | 'DONE'.
+      - **Due At:** string (to the nearest minute, ISO 8601 format).
+  - **Response:**
+    - If an error occurs, the response body should contain a descriptive message.
+
+- ## Retrieve Task Details.
+  - **Method:** GET
+  - **URI/Path:** ```/task/details```
+  - **URL Params:**
+    - id: the id of the task to view.
+  - **Response:**
+    - The response body should be the requested task.
+- ## Retrieve All Tasks.
+  - **Method:** GET
+  - **URI/Path:** ```/task/index```
+  - **Response:**
+    - The response body should be a list of all tasks, sorted by due date in descending order.
+- ## Update Task.
+  - **Method:** PUT
+  - **URI/Path:** ```/task/update```
+  - **URL Params:**
+    - id: the id of the task to update
+  - **Body:**
+    - JSON representing the updated details for the task.
+  - **Response:**
+- ## Delete Task.
+  - **Method:** DELETE
+  - **URI/Path:** ```/delete```
+  - **URL Params:**
+    - id: the id of the task to delete.
+  - **Response:**
+    - If an error occurs, the response body should contain a descriptive message.
