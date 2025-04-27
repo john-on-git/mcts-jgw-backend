@@ -26,6 +26,9 @@
   - **URI/Path:** ```/task/index```
   - **Response:**
     - The response body should be a list of all tasks, sorted by due date in descending order.
+    - Tasks should be in this order:
+      - Incomplete tasks should come before complete tasks.
+      - Tasks of the same status kind should be sorted by due date, most urgent first.
 - ## Update Task.
   - **Method:** PUT
   - **URI/Path:** ```/task/update```

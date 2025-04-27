@@ -49,7 +49,7 @@ public class TaskController {
 
     @GetMapping(value = "/index", produces = "application/json")
     public ResponseEntity<Iterable<Task>> retrieveCases() {
-        return ok().body(taskRepository.findAll());
+        return ok().body(taskRepository.findAllOrderByCategoryAndDate());
     }
 
     @PutMapping(value = "/update", produces = "application/json")
