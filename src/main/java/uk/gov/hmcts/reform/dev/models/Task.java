@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@SecondaryTable(name="task_status")
-public class Task {
-    @Id
+public class Task { @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "task_generator")
     @SequenceGenerator(name="task_generator", sequenceName = "task_id_seq", allocationSize = 1)
     private Integer id;
