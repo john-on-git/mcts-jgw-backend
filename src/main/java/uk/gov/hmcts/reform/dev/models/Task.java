@@ -18,12 +18,12 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "task_generator")
     @SequenceGenerator(name="task_generator", sequenceName = "task_id_seq", allocationSize = 1)
-    private Long id;
+    private Integer id;
 
     @Column(nullable=false)
     private String title;
 
-    @Column(nullable=true)
+    @Column()
     private String description;
 
     @Column(nullable=false)
