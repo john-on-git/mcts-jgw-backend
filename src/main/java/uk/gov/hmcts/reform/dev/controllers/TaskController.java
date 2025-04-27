@@ -43,7 +43,7 @@ public class TaskController {
     }
 
     @GetMapping(value = "/details", produces = "application/json")
-    public ResponseEntity<Optional<Task>> retrieveCase(@RequestParam long id) {
+    public ResponseEntity<Optional<Task>> retrieveCase(@RequestParam int id) {
         return ok().body(taskRepository.findById(id));
     }
 
@@ -65,7 +65,7 @@ public class TaskController {
     }
 
     @DeleteMapping(value = "/delete")
-    public ResponseEntity<Object> deleteCase(@RequestParam long id) {
+    public ResponseEntity<Object> deleteCase(@RequestParam int id) {
         try {
             taskRepository.deleteById(id);
             return ok().build();
