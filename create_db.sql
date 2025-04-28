@@ -20,3 +20,5 @@ CREATE TABLE task (
   due_at TIMESTAMP NOT NULL,
   status INT NOT NULL REFERENCES task_status(id)
 );
+
+INSERT INTO task (id, title, description, due_at, status) VALUES (0, 'My Test Task', 'My test task for frontend jest tests.', NOW(), 1);

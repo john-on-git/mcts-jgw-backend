@@ -6,12 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.dev.models.Task;
+import uk.gov.hmcts.reform.dev.models.TaskStatus;
 import uk.gov.hmcts.reform.dev.repositories.TaskRepository;
 
 import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.*;
 
+@CrossOrigin(origins = {"https://localhost:3100"}, maxAge = 3600)
 @RestController
 @RequestMapping(path="/task")
 public class TaskController {
@@ -19,9 +21,12 @@ public class TaskController {
     private TaskRepository taskRepository;
 
     @PostMapping(value = "/create")
-    public ResponseEntity<Object> createCase(@RequestBody Task task) {
+    public ResponseEntity<Object> createTask(@RequestBody Task task) {
         try {
             if(task.getId() == null) {
+                if(task.getStatus() == null) {
+                    task.setStatus(new TaskStatus(1, null));
+                }
                 final var inserted = taskRepository.save(task);
                 return created(
                     UriComponentsBuilder.newInstance()
