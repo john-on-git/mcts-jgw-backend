@@ -1,10 +1,4 @@
 # HMCTS Dev Test Backend
-This will be the backend for the brand new HMCTS case management system. As a potential candidate we are leaving
-this in your hands. Please refer to the brief for the complete list of tasks! Complete as much as you can and be
-as creative as you want.
 
-You should be able to run `./gradlew build` to start with to ensure it builds successfully. Then from that you
-can run the service in IntelliJ (or your IDE of choice) or however you normally would.
-
-There is an example endpoint provided to retrieve an example of a case. You are free to add/remove fields as you
-wish.
+- I had to modify the SSL cert generation script, I think this is a platform thing because I'm building on Windows? You may have to restore that.
+- This requires a database of course, I used Postgres & I've included the script to set up the tables (create_db.sql).
